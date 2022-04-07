@@ -1,4 +1,69 @@
-<hello name="{{ name }}"></hello>
-<p>
-  Start editing to see some magic happen :)
-</p>
+<body>
+  <form (ngSubmit)="onSubmit()">
+    <label>Dane podstawowe</label><br />
+    <label
+      >Imię:
+      <input
+        type="text"
+        name="imie"
+        minlength="3"
+        [(ngModel)]="osoba.name"
+        required
+      /> </label
+    ><br />
+    <label
+      >Nazwisko:
+      <input
+        type="text"
+        name="nazwisko"
+        [(ngModel)]="osoba.nazwisko"
+        required
+      /> </label
+    ><br />
+    <label
+      >Email:
+      <input type="email" name="mail" [(ngModel)]="osoba.email" /> </label
+    ><br />
+    <label
+      >Telefon komórkowy:
+      <input
+        type="number"
+        name="nrtel"
+        pattern="[0-9]{9}"
+        [(ngModel)}="osoba.telefon"
+        required
+      /> </label
+    ><br /><br />
+    <label>Dane do wystawienia faktury</label><br />
+    <label
+      >Odbiorca: Osoba Prywatna<input
+        type="radio"
+        name="odb"
+        value="ospw"
+        [(ngModel)]="osoba.obiorca"
+        required
+      />
+      Firma<input
+        type="radio"
+        name="odb"
+        value="firma"
+        (ngModel)]="osoba.obiorca"
+        required
+      />
+    </label>
+    <input type="submit" value="Wyslij" [disabled]="!dane.form.valid" />
+    <input type="button" value="Wyczysc" />
+    <input
+      type="button"
+      value="Nowa Osoba"
+      (click)="dane.reset(); NowaOsoba()"
+    />
+    <button></button>
+  </form>
+
+  <p>{{ imie }}</p>
+  <p>{{ nazwisko }}</p>
+  <p>{{ email }}</p>
+  <p>{{ telefon }}</p>
+  <p>{{ odbiorca }}</p>
+</body>
